@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D24B4DB21A26DBD000F9956 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D24B4DA21A26DBC000F9956 /* SWRevealViewController.m */; };
 		4D47282B21914CFF0018F55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D47282A21914CFF0018F55E /* AppDelegate.swift */; };
 		4D47282D21914CFF0018F55E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D47282C21914CFF0018F55E /* MapViewController.swift */; };
 		4D47283021914CFF0018F55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D47282E21914CFF0018F55E /* Main.storyboard */; };
@@ -19,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D24B4D921A26DBB000F9956 /* CSE438-MatthewYang-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CSE438-MatthewYang-Bridging-Header.h"; sourceTree = "<group>"; };
+		4D24B4DA21A26DBC000F9956 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../../../Desktop/savedsplash/Splash/CSE438-MatthewYang/CSE438-MatthewYang/SWRevealViewController.m"; sourceTree = "<group>"; };
+		4D24B4DC21A26DD0000F9956 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../../../Desktop/savedsplash/Splash/CSE438-MatthewYang/CSE438-MatthewYang/SWRevealViewController.h"; sourceTree = "<group>"; };
 		4D47282721914CFF0018F55E /* CSE438-MatthewYang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CSE438-MatthewYang.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D47282A21914CFF0018F55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D47282C21914CFF0018F55E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -69,9 +73,12 @@
 				6823A579219AA7E30094CDE7 /* FiltersViewController.swift */,
 				4D47282E21914CFF0018F55E /* Main.storyboard */,
 				4DBA720A2196313D009E6598 /* CustomNavController.swift */,
+				4D24B4DA21A26DBC000F9956 /* SWRevealViewController.m */,
+				4D24B4DC21A26DD0000F9956 /* SWRevealViewController.h */,
 				4D47283121914D000018F55E /* Assets.xcassets */,
 				4D47283321914D000018F55E /* LaunchScreen.storyboard */,
 				4D47283621914D000018F55E /* Info.plist */,
+				4D24B4D921A26DBB000F9956 /* CSE438-MatthewYang-Bridging-Header.h */,
 			);
 			path = "CSE438-MatthewYang";
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 				TargetAttributes = {
 					4D47282621914CFF0018F55E = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -147,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D24B4DB21A26DBD000F9956 /* SWRevealViewController.m in Sources */,
 				4D47282D21914CFF0018F55E /* MapViewController.swift in Sources */,
 				4DBA720B2196313D009E6598 /* CustomNavController.swift in Sources */,
 				B99E8B9A2199F6800092CCC9 /* CustomAnnotation.swift in Sources */,
@@ -296,16 +305,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SS86X76AGT;
 				INFOPLIST_FILE = "CSE438-MatthewYang/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.matthewyang.CSE438-MatthewYang";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CSE438-MatthewYang/CSE438-MatthewYang-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -315,16 +327,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SS86X76AGT;
 				INFOPLIST_FILE = "CSE438-MatthewYang/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.matthewyang.CSE438-MatthewYang";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CSE438-MatthewYang/CSE438-MatthewYang-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

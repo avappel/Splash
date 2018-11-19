@@ -9,19 +9,21 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, SWRevealViewControllerDelegate{
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var profileButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var filterButton: UIButton!
     
-    //117,201, 241
-    let themeColor = UIColor.init(red: 0.4588, green: 0.78823, blue: 0.94509, alpha: 1)
+    //RGB Values: R-89, G-174, B-254
+    let themeColor = UIColor.init(red: 0.35, green: 0.682, blue: 0.996078, alpha: 1)
     var currentLatitude = 38.6485577
     var currentLongitude = -90.311407
     var currentLocation: CLLocation!
     let locManager = CLLocationManager()
+    
+    var once = false
     
   
     
@@ -36,12 +38,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        revealViewController()?.delegate = self
         self.locManager.requestWhenInUseAuthorization()
-        
      
-        
         //ADD BUTTON
-        let infoButton = UIButton(type: .custom)
+        /*let infoButton = UIButton(type: .custom)
         infoButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         infoButton.backgroundColor = themeColor
         infoButton.layer.cornerRadius = 10
@@ -63,10 +64,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
    // let infoItem = UIBarButtonItem(title: "addButton", style: .done, target: self, action: #selector(logoutUser))
         
             navigationItem.rightBarButtonItems = [infoItem]
-            navigationItem.rightBarButtonItem?.width = 24
+            navigationItem.rightBarButtonItem?.width = 24*/
         
         //PROFILE BUTTON
-            let anotherButton = UIButton(type: .custom)
+          /*  let anotherButton = UIButton(type: .custom)
             anotherButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
             anotherButton.setTitleColor(UIColor.white, for: .normal)
             anotherButton.backgroundColor = themeColor
@@ -89,7 +90,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             anotherButton.setImage(image2, for: .normal)
         
             let infoItem2 = UIBarButtonItem(customView: anotherButton)
-            navigationItem.leftBarButtonItems = [infoItem2]
+            navigationItem.leftBarButtonItems = [infoItem2]*/
         
         
             if CLLocationManager.locationServicesEnabled(){
@@ -114,13 +115,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let washULocation: CLLocationCoordinate2D = CLLocationCoordinate2D.init(latitude: currentLatitude, longitude: currentLongitude)
         
             let currentLocView = MKMapCamera.init(lookingAtCenter: washULocation, fromDistance: 100, pitch: 100, heading: 100)
-            mapView.setCamera(currentLocView, animated: true)
+            mapView.setCamera(currentLocView, animated: false)
     
         
 //        if(isAddingPin){
 //            mapView.addAnnotation(addingAnnotation)
 //        }
         
+        sideMenus()
     }//viewdidload
     //STILL NEED A DATABASE TO STORE PINS TO LOAD
     
@@ -138,10 +140,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         //let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        let userLocation = locations.last
-        currentLocation = userLocation //maybe this works?
-        let viewRegion = MKCoordinateRegionMakeWithDistance((userLocation?.coordinate)!, 600, 600)
-        self.mapView.setRegion(viewRegion, animated: false)
+        if !once{
+            let userLocation = locations.last
+            currentLocation = userLocation //maybe this works?
+            let viewRegion = MKCoordinateRegionMakeWithDistance((userLocation?.coordinate)!, 600, 600)
+            self.mapView.setRegion(viewRegion, animated: false)
+            once = true
+        }
+    }
+    
+    @objc func sideMenus(){
+        print ("how about here?")
+        if revealViewController() != nil{
+            //print("go here?")
+            navigationItem.leftBarButtonItem?.target = self.revealViewController()
+            navigationItem.leftBarButtonItem?.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.revealViewController().rearViewRevealWidth = 300
+            
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
     
     
